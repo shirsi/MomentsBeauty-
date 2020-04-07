@@ -1,0 +1,41 @@
+#nav {
+  background: #fcefec;
+  color: #666666;
+}
+
+#main-footer {
+  background: #fcefec;
+  color: #666666;
+}
+
+h1 {
+  font-family: "Gotu", sans-serif;
+  font-family: "Dancing Script", cursive;
+}
+
+.lead {
+  font-family: "Gotu", sans-serif;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.8em;
+}
+
+#main-footer {
+  position: fixed;
+  padding: 1.5em;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fcefec;
+  color: #666666;
+  text-align: center;
+}
+body {
+  height: 100%;
+}
+.images {
+  margin: 0em 5em 3em 5em;
+}
+
+.carousel-item > img {
+  height: 70vh;
+}
