@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="lightbox/js/lightbox.js"></script>
+    <link rel="shortcut icon" href="Logo2.png" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562&family=Gotu&display=swap"
+      rel="stylesheet"
+    />
+    <link href="lightbox/css/lightbox.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="main.css" />
+    
+    <script src="app.js"></script>
+    <script src="lightbox/js/lightbox.js"></script>
+    <title>Moments Beauty</title>
+  </head>
+
+  <body>
+    <!-- Top Bar -->
+    <!-- <section id="top-bar" class="p-3">
+    <div class="container">
+      <div class="col-md-4">
+        <div class="social text-right">
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-pinterest"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section> -->
+
+    <!-- Navbar -->
+    <nav id = 'nav'class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">M & B</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Cosmetics <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Skin Care</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hair</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="register.html">
+              <i class="fas fa-user-plus"></i> Register</a
+            >
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="login.html">
+              <i class="fas fa-sign-in-alt"></i>
+
+              Login</a
+            >
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id = "navbutton" class="btn  my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!-- Showcase -->
+    <section id="showcase">
+      <div class="container text-center">
+        <div class="home-search p-5">
+          <div class=>
+            <h1 class="display-4 mb-4">
+              Moments Beauty
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="listing" class="py-4">
+      <div class="container">
+        <a href="listings.html" class="btn btn-light mb-4">Back To Listings</a>
+        <div class="row">
+          <div class="col-md-9">
+            <!-- Home Main Image -->
+            <img src="Logo2.png" alt="" class="img-main img-fluid mb-3">
+            <!-- Thumbnails -->
+            <div class="row mb-5 thumbs">
+              <div class="col-md-2">
+                <a href="Logo2.png" data-lightbox="home-images">
+                  <img src="Logo2.png" alt="" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a href="Logo2.png" data-lightbox="home-images">
+                  <img src="Logo2.png"alt="" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a href="assets/img/homes/home-inside-3.jpg" data-lightbox="home-images">
+                  <img src="assets/img/homes/home-inside-3.jpg" alt="" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a href="assets/img/homes/home-inside-4.jpg" data-lightbox="home-images">
+                  <img src="assets/img/homes/home-inside-4.jpg" alt="" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a href="assets/img/homes/home-inside-5.jpg" data-lightbox="home-images">
+                  <img src="assets/img/homes/home-inside-5.jpg" alt="" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a href="assets/img/homes/home-inside-6.jpg" data-lightbox="home-images">
+                  <img src="assets/img/homes/home-inside-6.jpg" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+            <!-- Fields -->
+            <div class="row mb-5 fields">
+              <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-money-bill-alt"></i> Asking Price:
+                    <span class="float-right">$490,000</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-bed"></i> Bedrooms:
+                    <span class="float-right">3</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-bath"></i> Bathrooms:
+                    <span class="float-right">2</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-car"></i> Garage:
+                    <span class="float-right">2
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-th-large"></i> Square Feet:
+                    <span class="float-right">3200</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-square"></i> Lot Size:
+                    <span class="float-right">2.5 Acres
+                    </span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-calendar"></i> Listing Date:
+                    <span class="float-right">8/30/2018</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                    <i class="fas fa-bed"></i> Realtor:
+                    <span class="float-right">Kyle Brown
+                    </span>
+                  </li>
+  
+  
+                </ul>
+              </div>
+            </div>
+  
+            <!-- Description -->
+            <div class="row mb-5">
+              <div class="col-md-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia recusandae esse reiciendis officia omnis non rerum dicta
+                cupiditate nostrum molestias deserunt aut minus inventore animi atque, consequuntur ad fugit. Possimus culpa
+                blanditiis repellendus ipsa similique ullam, natus error dolor harum.
+              </div>
+            </div>
+          </div>
+    <!-- Footer -->
+    <footer id="main-footer" class="">
+      Copyright &copy;
+      <span class="year"></span> Moments Beauty
+    </footer>
+    
+  </body>
+</html>

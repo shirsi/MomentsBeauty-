@@ -16,7 +16,7 @@ h1 {
 .lead {
   font-family: "Gotu", sans-serif;
   font-family: "Dancing Script", cursive;
-  font-size: 1em;
+  /* font-size: 1em; */
   margin: 2em;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .carousel-item > img {
-  height: 70vh;
+  height: 50vh;
 }
 .card-body > a {
   text-decoration: none;
