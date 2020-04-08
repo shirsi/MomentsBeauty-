@@ -4,7 +4,7 @@
 }
 
 #main-footer {
-  background: #fcefec;
+  background: #f8c2da;
   color: #666666;
 }
 
@@ -16,12 +16,14 @@ h1 {
 .lead {
   font-family: "Gotu", sans-serif;
   font-family: "Dancing Script", cursive;
-  font-size: 1.8em;
+  font-size: 1em;
+  margin: 2em;
 }
 
 #main-footer {
-  position: fixed;
-  padding: 1.5em;
+  position: relative;
+  margin-top: 1em;
+  padding: 1em;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -38,4 +40,30 @@ body {
 
 .carousel-item > img {
   height: 70vh;
+}
+.card-body > a {
+  text-decoration: none;
+}
+
+#navbutton {
+  background-color: #f7c3d7;
+}
+.pop {
+  padding-top: 1em;
+  margin: 1em;
+}
+.pop > img {
+  height: 25vh;
+}
+
+#mostPop {
+  font-family: "Comic Neue", cursive;
+  margin: 2em;
+}
+.navbar-brand {
+  font-family: "Gotu", sans-serif;
+  font-family: "Dancing Script", cursive;
+}
+#two {
+  margin: 2em;
 }

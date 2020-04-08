@@ -9,15 +9,19 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562&family=Gotu&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
-    />
+    /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="main.css" />
-
+    
+    <script src="app.js"></script>
     <title>Moments Beauty</title>
   </head>
 
@@ -49,50 +53,44 @@
   </section> -->
 
     <!-- Navbar -->
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg sticky-top">
-      <div id="main-contain" class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="assets/img/logo.png" class="logo" alt="" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav">
-            <li class="nav-item active mr-3">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item mr-3">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item mr-3">
-              <a class="nav-link" href="listings.html">Featured Listings</a>
-            </li>
-          </ul>
+    <nav id = 'nav'class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">M & B</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Cosmetics <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Skin Care</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hair</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="register.html">
+              <i class="fas fa-user-plus"></i> Register</a
+            >
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="login.html">
+              <i class="fas fa-sign-in-alt"></i>
 
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-3">
-              <a class="nav-link" href="register.html">
-                <i class="fas fa-user-plus"></i> Register</a
-              >
-            </li>
-            <li class="nav-item mr-3">
-              <a class="nav-link" href="login.html">
-                <i class="fas fa-sign-in-alt"></i>
-
-                Login</a
-              >
-            </li>
-          </ul>
-        </div>
+              Login</a
+            >
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id = "navbutton" class="btn  my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
     </nav>
-
     <!-- Showcase -->
     <section id="showcase">
       <div class="container text-center">
@@ -126,14 +124,14 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://static1.squarespace.com/static/5a918c4c3917ee828d5f0ba9/5a96e87bf9619af77cd3cb62/5a96ed4e652dea41a6b3b160/1520993581346/Copy+of+image1+%285%29+%282%29.JPG" class="d-block w-100" alt="...">
+            <img src="https://cdn130.picsart.com/271043693025201.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="pink-car-1.jpg" class="d-block w-100" alt="...">
+            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cheerful-female-model-with-vivid-makeup-royalty-free-image-886639476-1547017119.jpg" class="d-block w-100" alt="">
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -150,85 +148,60 @@
         </a>
       </div>
     </section>
-    <section>
-      <div class="card" style="width: 18rem;">
+   
+    <section id="two">
+      <div id='mostPop' class="text-center"><h2>Most Popular</h2></div>
+    <div>
+    </div>
+    <div class="container-md">
+      <div class="row">
+        <div class="card pop col text-center" style="max-width: 18rem;">
+          <img
+            src="https://akns-images.eonline.com/eol_images/Entire_Site/2019220/rs_1920x1423-190320124306-1920-tatcha-skin-cream.jpg?fit=inside|900:auto&output-quality=90"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+           <a  class="stretched-link text-muted" href="google.com"> <h5 class="card-title">Card title</h5></a>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          </div>
+        <div class="card pop col text-center "  style="max-width: 18rem;">
+          <img
+            src="https://cdn.shopify.com/s/files/1/1338/0845/products/baby-got-peach_1_800x1200.jpg?v=1568772040"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+           <a  class="stretched-link text-muted" href="google.com"> <h5 class="card-title">Card title</h5></a>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+        </div>
+      <div class="card  pop col text-center" style="max-width: 18rem;" >
         <img
-          src="https://picture-cdn.wheretoget.it/aiynmx-l-610x610-hair+accessory-tumblr-hair-hairstyles-pink+hair-curly+hair-lipstick-metallic-metallic+lipstick-eye+makeup-eyeliner-eye+shadow-earrings-gold+earrings-necklace-gold+necklace-jewels.jpg"
+          src="starwars lipsticks.png"
           class="card-img-top"
           alt="..."
         />
+      
+      
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+         <a  class="stretched-link text-muted" href="google.com"> <h5 class="card-title">Card title</h5></a>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://www.anastasiabeverlyhills.com/dw/image/v2/BBLL_PRD/on/demandware.static/-/Sites-anastasia-master-catalog/default/dw996ba919/images/Redesign/Rescaled/abh_brow_definer_Dark-Brown.jpg?sw=1376&sh=1376&sm=fit"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-      <div class="card" style="width: 14rem;">
-        <img
-          src="https://www.anastasiabeverlyhills.com/dw/image/v2/BBLL_PRD/on/demandware.static/-/Sites-anastasia-master-catalog/default/dw26cf7b49/images/2019_ImageOptimizations/Eyes/_Palette-Jackie/EYES_PaletteRule_Jackie-open_OPTIMIZED.jpg?sw=1200&sh=1200&sm=fit"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#">Go somewhere</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="card" style="width: 18rem;">
-      <img
-        src="https://www.anastasiabeverlyhills.com/dw/image/v2/BBLL_PRD/on/demandware.static/-/Sites-anastasia-master-catalog/default/dw26cf7b49/images/2019_ImageOptimizations/Eyes/_Palette-Jackie/EYES_PaletteRule_Jackie-open_OPTIMIZED.jpg?sw=1200&sh=1200&sm=fit"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#">Go somewhere</a>
       </div>
     </div>
+
+    </section>
 
     <!-- Footer -->
     <footer id="main-footer" class="">
