@@ -21,7 +21,7 @@ h1 {
 }
 
 #main-footer {
-  position: relative;
+  position: fixed;
   margin-top: 1em;
   padding: 1em;
   left: 0;
