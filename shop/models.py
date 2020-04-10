@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.conf import settings
 from django.db.models.signals import post_save
+from django.shortcuts import reverse
 
 
 class Product(models.Model):
@@ -22,16 +23,29 @@ class Product(models.Model):
     hair = models.BooleanField(default=False)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     is_published = models.BooleanField(default=True)
+    slug = models.SlugField()
+    size = models.FloatField()
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("shop:products", kwargs={'slug': self.slug})
+
+    def get_add_to_cart_url(self):
+        return reverse("shop:add-to-cart", kwargs={'slug': self.slug})
+
+    def get_remove_from_cart_url(self):
+        return reverse("shop:remove-from-cart", kwargs={'slug': self.slug})
 
 
 class OrderProduct(models.Model):
-    products = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    ordered = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return f"{self.quantity} of {self.product.title}"
 
 
 class Order(models.Model):
@@ -43,4 +57,4 @@ class Order(models.Model):
     ordered_date = models.DateTimeField()
 
     def __str__(self):
-        return self.title
+        return self.user.username
