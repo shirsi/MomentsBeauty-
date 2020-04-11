@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="Logo2.png" />
+    <link rel="shortcut icon" href="{% static 'Logo2.png' %}" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562&family=Gotu&display=swap"
@@ -149,7 +149,7 @@
         <ul class="navbar-nav nav-flex-icons">
           
           <li class="nav-item  ">
-            <a href="" class="nav-link waves-effect">
+            <a href="{% url 'shop:order-summary' %}" class="nav-link waves-effect">
               <span class="badge badge-danger z-depth-1 mr-1"> {{request.user| cart_product_count}}</span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>

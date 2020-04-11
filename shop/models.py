@@ -49,6 +49,9 @@ class OrderProduct(models.Model):
     def __str__(self):
         return f"{self.quantity} of {self.product.title}"
 
+    def get_total_product_price(self):
+        return self.quantity * self.product.price
+
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -60,3 +63,9 @@ class Order(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_total(self):
+        total = 0
+        for order_product in self.products.all():
+            total += order_product.get_total_product_price()
+        return total

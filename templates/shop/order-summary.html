@@ -1,0 +1,78 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class="container">
+  <h2 calss="text-center">Order Summary</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for order_product in object.products.all%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>
+            <a
+              style="text-decoration: none;"
+              href="{{order_product.product.get_absolute_url}}"
+            >
+              {{order_product.product.title}}</a
+            >
+          </td>
+          <td>${{order_product.product.price}}</td>
+          <td>{{order_product.quantity}}</td>
+          <td>
+            <a
+              href="{% url 'shop:remove-single-product-from-cart' order_product.product.slug %}"
+              ><i class="fas fa-minus mr-2"></i
+            ></a>
+
+            {{order_product.get_total_product_price}}
+            <a
+              href="{% url 'shop:add-to-single-product-cart' order_product.product.slug   %}"
+              ><i class="fas fa-plus ml-2"></i
+            ></a>
+          </td>
+          <td>
+            <a><i class="fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4"><b>Order Total</b></td>
+          <td>${{object.get_total}}</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <a
+              class="btn btn-warning float-right ml-2"
+              href="{% url 'shop:checkout' %}"
+              >Checkout</a
+            ><a class="btn btn-primary float-right" href="/"
+              >Continue Shopping</a
+            >
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">Your cart is empty</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <a class="btn btn-primary float-right" href="/"
+              >Continue Shopping</a
+            >
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%endblock content%}

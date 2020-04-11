@@ -1,5 +1,5 @@
 
-    {%extends 'base.html'%}{%block content %}
+    {%extends 'base.html'%}{%load static %}{%block content %}
     <section class="images">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -75,7 +75,7 @@
         </div>
       <div class="card  pop col text-center" style="width: 18rem;" >
         <img
-          src="..."
+          src="{% static 'starwars.png' %}"
           class="card-img-top"
           alt="..."
         />
