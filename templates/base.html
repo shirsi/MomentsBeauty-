@@ -85,10 +85,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="">M & B</a>
+        <a class="navbar-brand" href="{%url 'shop:index' %}">M & B</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href=""
+            <a class="nav-link" href="{%url 'shop:makeup' %}"
               >Cosmetics <span class="sr-only">(current)</span></a
             >
           </li>
@@ -119,7 +119,7 @@
         <ul class="navbar-nav ml-auto">
           {%if user.is_authenticated %}
           <li  class="nav-item active mr-3"class="nav-item mr-3" >
-            <a class="nav-link" href="{% url 'dashboard' %}"> Welcome
+            <a class="nav-link" href=""> Welcome
               {{user.username}} </a>
           </li>
           <li class="nav-item mr-3">
@@ -150,7 +150,7 @@
           
           <li class="nav-item  ">
             <a href="" class="nav-link waves-effect">
-              <span class="badge badge-danger z-depth-1 mr-1"></span>
+              <span class="badge badge-danger z-depth-1 mr-1"> {{request.user| cart_product_count}}</span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>

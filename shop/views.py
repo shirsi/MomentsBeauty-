@@ -9,19 +9,19 @@ from django.http import HttpResponse
 
 
 def index(request):
-    products = Product.objects.order_by(
-        '-product_date').filter(is_published=True)[:3]
-    context = {
-        'products': products
-    }
-    return render(request, 'index.html', context)
+    # products = Product.objects.order_by(
+    #     '-product_date').filter(is_published=True)[:3]
+    # context = {
+    #     'products': products
+    # }
+    return render(request, 'shop/index.html')
 
 
 def product_list(request):
     context = {
         'products': Product.objects.all()
     }
-    return render(request, 'product_list.html', context)
+    return render(request, 'shop/product_list.html', context)
 
 
 def checkout(request):
@@ -30,12 +30,12 @@ def checkout(request):
 
 class MakeupView (ListView):
     model = Product
-    template_name = 'makeup.html'
+    template_name = 'shop/makeup.html'
 
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'product_detail.html'
+    template_name = 'shop/product_detail.html'
 
 
 def add_to_cart(request, slug):

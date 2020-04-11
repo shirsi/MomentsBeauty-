@@ -32,7 +32,7 @@ def register(request):
                     user.save()
                     auth.login(request, user)
                     messages.success(request, 'You are now logged in')
-                    return redirect('shop/index')
+                    return redirect('shop:index')
 
         else:
             messages.error(request, 'Passwords do not match')
@@ -51,7 +51,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('index')
+            return redirect('shop:index')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
@@ -63,7 +63,7 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are now logged out')
-        return redirect('index')
+        return render(request, 'accounts/login.html')
 
 
 def dashboard(request):
