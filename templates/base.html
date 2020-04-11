@@ -1,4 +1,4 @@
-{%load static%}
+{%load static%}{%load cart_templates_tags%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +40,7 @@
 
     <link rel="stylesheet" href="{% static 'main.css' %}" />
 
-    <script src="{% static 'app.js' %}"></script>
+    
     <title>Moments Beauty</title>
   </head>
 
@@ -85,10 +85,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.html">M & B</a>
+        <a class="navbar-brand" href="">M & B</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href=""
               >Cosmetics <span class="sr-only">(current)</span></a
             >
           </li>
@@ -105,20 +105,6 @@
             >
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="register.html">
-              <i class="fas fa-user-plus"></i> Register</a
-            >
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="login.html">
-              <i class="fas fa-sign-in-alt"></i>
-
-              Login</a
-            >
-          </li>
-        </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
@@ -130,8 +116,58 @@
             Search
           </button>
         </form>
+        <ul class="navbar-nav ml-auto">
+          {%if user.is_authenticated %}
+          <li  class="nav-item active mr-3"class="nav-item mr-3" >
+            <a class="nav-link" href="{% url 'dashboard' %}"> Welcome
+              {{user.username}} </a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form>
+          </li>
+  
+          {%else%}
+          <li {% if 'register' in request.path %} class="nav-item active mr-3" {%else%} class="nav-item mr-3" {%endif%}>
+            <a class="nav-link" href="{% url 'register' %}">
+              <i class="fas fa-user-plus"></i> Register</a>
+          </li>
+          <li {% if 'login' in request.path %} class="nav-item active mr-3" {%else%} class="nav-item mr-3" {%endif%}>
+            <a class="nav-link" href="{% url 'login' %}">
+              <i class="fas fa-sign-in-alt"></i>
+  
+              Login</a>
+          </li>
+          {%endif%}
+        
+       
+        <ul class="navbar-nav nav-flex-icons">
+          
+          <li class="nav-item  ">
+            <a href="" class="nav-link waves-effect">
+              <span class="badge badge-danger z-depth-1 mr-1"></span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          </ul>
       </div>
     </nav>
+    <div id="message">
+      {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+          </div>
+          {% endfor %}
+      {% endif %}
+      </div>
     <section id="showcase">
       <div class="container text-center">
         <div class="home-search p-5">
@@ -143,6 +179,7 @@
         </div>
       </div>
     </section>
+  
     <!-- Showcase -->
     {% block content %}{%endblock%}
     <!-- Footer -->
@@ -150,5 +187,6 @@
       Copyright &copy;
       <span class="year"></span> Moments Beauty
     </footer>
+    <script src="{% static 'app.js' %}"></script>
   </body>
 </html>

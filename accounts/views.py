@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+
 # from contacts.models import Contact
 
 
@@ -31,7 +32,7 @@ def register(request):
                     user.save()
                     auth.login(request, user)
                     messages.success(request, 'You are now logged in')
-                    return redirect('index')
+                    return redirect('shop/index')
 
         else:
             messages.error(request, 'Passwords do not match')
@@ -50,7 +51,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('dashboard')
+            return redirect('index')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
