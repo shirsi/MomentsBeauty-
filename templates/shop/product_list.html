@@ -1,5 +1,12 @@
 {%extends 'base.html'%} {%block content%}
-<h2>Here is the list</h2>
+<h2>Skincare</h2>
 
-{%for product in products%} {{product}}
-<a href="{{product.get_absolute_url}} ">Link</a>{%endfor%} {%endblock content%}
+{%for product in products%}
+
+<a href="{{product.get_absolute_url}} "
+  >{{product}}</a>
+  {%endfor%}
+     {%endblock content%}
+    </div>
+  </div>
+</a>

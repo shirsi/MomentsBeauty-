@@ -22,7 +22,7 @@ h1 {
 
 #main-footer {
   position: fixed;
-  margin-top: 1em;
+  margin-top: 5em;
   padding: 1em;
   left: 0;
   bottom: 0;
@@ -69,4 +69,22 @@ body {
 }
 #checkout_button {
   background: #f8c2da;
+}
+
+#purple {
+  background: #f4def5;
+}
+
+#main-photo {
+  height: 30vh;
+  width: 25vw;
+}
+
+#light-purplepink {
+  background: #ffe2ff;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
 }

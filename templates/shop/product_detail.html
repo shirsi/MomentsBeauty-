@@ -1,47 +1,60 @@
-{%extends 'base.html'%} {%block content%}
+{%extends 'base.html'%}{%load static%} {%block content%}
 
 
     <!-- Showcase -->
 
-    <section id="listing" class="py-4">
+    <section id="object" class="py-4">
       <div class="container">
-        <a href="listings.html" class="btn btn-light mb-4"> Back to Product type</a>
+        <a href="{% url 'shop:products' %}" class="btn btn-light mb-4">Back</a>
         <div class="row">
           <div class="col">
             <!-- Home Main Image -->
-            <img src="Logo2.png" alt="" class="img-main img-fluid mb-3">
+            <img id="main-photo"src="{{object.photo_main.url}}" alt="" class=" img-fluid mb-3">
             <!-- Thumbnails -->
             <div class="row mb-5 thumbs">
+              
+              {%if object.photo_1%}
               <div class="col-md-2">
-                <a href="Logo2.png" data-lightbox="home-images">
-                  <img src="Logo2.png" alt="" class="img-fluid">
+                <a href="{{ object.photo_1.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_1.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
+              {%if object.photo_2%}
               <div class="col-md-2">
-                <a href="Logo2.png" data-lightbox="home-images">
-                  <img src="Logo2.png"alt="" class="img-fluid">
+                <a href="{{ object.photo_2.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_2.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
+              {%if object.photo_3%}
               <div class="col-md-2">
-                <a href="...-3.jpg" data-lightbox="home-images">
-                  <img src="" alt="" class="img-fluid">
+                <a href="{{ object.photo_3.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_3.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
+              {%if object.photo_4%}
               <div class="col-md-2">
-                <a href="" data-lightbox="home-images">
-                  <img src="" alt="" class="img-fluid">
+                <a href="{{ object.photo_4.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_4.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
+              {%if object.photo_5%}
               <div class="col-md-2">
-                <a href="" data-lightbox="home-images">
-                  <img src="" alt="" class="img-fluid">
+                <a href="{{ object.photo_5.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_5.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
+              {%if object.photo_6%}
               <div class="col-md-2">
-                <a href="" data-lightbox="home-images">
-                  <img src="" alt="" class="img-fluid">
+                <a href="{{ object.photo_6.url}}" data-lightbox="home-images">
+                  <img src="{{ object.photo_6.url}}" alt="" class="img-fluid">
                 </a>
               </div>
+              {%endif%}
             </div>
             </div>
 
@@ -79,15 +92,13 @@
               blanditiis repellendus ipsa similique ullam, natus error dolor harum.
               </p>
               <p>Size: {{object.size}} ml</p>
-              <p>Price: {{object.price}}</p>
+              <p>Price: ${{object.price}}</p>
               <!-- <form class="form-inline my-2 my-lg-0">
                 <input type= 'hidden'>
                 <button id = "navbutton" class="btn  my-2 my-sm-0" type="submit">Add to Cart <i class="fas fa-shopping-cart"></i></button>
               </form> -->
 
               <a href  = "{{object.get_add_to_cart_url }}" id = "navbutton" class="btn  my-2 my-sm-0" >Add to Cart <i class="fas fa-shopping-cart"></i></a>
-              <a href  = "{{object.get_remove_from_cart_url }}" id = "navbutton" class="btn  my-2 my-sm-0" >remove Cart <i class="fas fa-shopping-cart"></i></a>
-            </div>
           </div>
         </div>
         </div>

@@ -8,6 +8,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 def index(request):
@@ -20,8 +21,11 @@ def index(request):
 
 
 def product_list(request):
+    products = Product.objects.filter(
+        skincare=True
+    )
     context = {
-        'products': Product.objects.all()
+        'products': products
     }
     return render(request, 'shop/product_list.html', context)
 
@@ -133,9 +137,13 @@ def remove_single_product_from_cart(request, slug):
                 user=request.user,
                 ordered=False
             )[0]
-            print(order_product)
-            order_product.quantity -= 1
-            order_product.save()
+            if order_product.quantity > 1:
+                order_product.quantity -= 1
+                order_product.save()
+            else:
+                order.products.remove(order_product)
+                order_product.delete()
+
             return redirect('shop:order-summary')
         else:
             messages.warning(request, "This product was not in your cart")
@@ -169,3 +177,32 @@ def add_to_single_product_cart(request, slug):
         order.products.add(order_product)
         messages.success(request, "This item was added to your cart.")
     return redirect('shop:order-summary')
+
+
+def remove_product_from_cart(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    print(product)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+
+    if order_qs.exists():
+        order = order_qs[0]
+
+        print(order.products)
+        if order.products.filter(product__slug=product.slug).exists():
+            print('in here')
+            order_product = OrderProduct.objects.filter(
+                product=product,
+                user=request.user,
+                ordered=False
+            )[0]
+            print(order_product)
+            order.products.remove(order_product)
+            order_product.delete()
+            return redirect('shop:order-summary')
+
+        else:
+            messages.warning(request, "This product was not in your cart")
+            return redirect('shop:order-summary')
+    else:
+        return redirect('shop:products')
+    return redirect('shop:products')

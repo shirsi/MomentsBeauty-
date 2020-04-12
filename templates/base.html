@@ -38,8 +38,8 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="{% static 'main.css' %}" />
-
+    <link rel="stylesheet" href="{% static 'main.css' now 'U' %}" />
+    <link rel="stylesheet" href="{% static 'lightbox/css/lightbox.min.css' %}" />
     
     <title>Moments Beauty</title>
   </head>
@@ -87,22 +87,17 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="{%url 'shop:index' %}">M & B</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
+          <li {% if '/makeup' in request.path %} class="nav-item active"  {%else%} class="nav-item" {%endif%}>
             <a class="nav-link" href="{%url 'shop:makeup' %}"
               >Cosmetics <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Skin Care</a>
+
+          <li {% if '/products' in request.path %} class="nav-item active"  {%else%} class="nav-item " {%endif%}>
+            <a class="nav-link" href="{%url 'shop:products' %}">Skin Care</a>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Hair</a
-            >
+          <li {% if '/order-summary' in request.path %} class="nav-item active"  {%else%} class="nav-item " {%endif%}>
+            <a class="nav-link" href="{%url 'shop:products' %}">Hair</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -181,12 +176,16 @@
     </section>
   
     <!-- Showcase -->
+    <div class="main-page">
     {% block content %}{%endblock%}
+  </div>
     <!-- Footer -->
+    
     <footer id="main-footer" class="">
       Copyright &copy;
       <span class="year"></span> Moments Beauty
     </footer>
     <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
   </body>
 </html>

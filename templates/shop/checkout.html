@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
-
 <main>
   <div class="container wow fadeIn">
+    <h2 class="my-5 h2">Checkout</h2>
     <div class="row">
       <div class="col-md-8 mb-4">
         <div class="card">
@@ -38,6 +38,7 @@
               <div class="row">
                 <div class="col-lg-4 col-md-12 mb-4">
                   <label for="country">Country</label>
+                  {{ form.shipping_country }}
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
@@ -81,6 +82,7 @@
               </div>
             </div>
 
+            {% if default_shipping_address %}
             <div class="custom-control custom-checkbox">
               <input
                 type="checkbox"
@@ -89,9 +91,12 @@
                 id="use_default_shipping"
               />
               <label class="custom-control-label" for="use_default_shipping"
-                >Use default shipping address:</label
+                >Use default shipping address: {{
+                default_shipping_address.street_address|truncatechars:10
+                }}</label
               >
             </div>
+            {% endif %}
 
             <hr />
 
@@ -125,7 +130,7 @@
               <div class="row">
                 <div class="col-lg-4 col-md-12 mb-4">
                   <label for="country">Country</label>
-
+                  {{ form.billing_country }}
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
@@ -159,6 +164,7 @@
               </div>
             </div>
 
+            {% if default_billing_address %}
             <div class="custom-control custom-checkbox">
               <input
                 type="checkbox"
@@ -167,37 +173,41 @@
                 id="use_default_billing"
               />
               <label class="custom-control-label" for="use_default_billing"
-                >Use default billing address:
-              </label>
+                >Use default billing address: {{
+                default_billing_address.street_address|truncatechars:10
+                }}</label
+              >
             </div>
-
+            {% endif %}
             <hr />
 
             <h3>Payment option</h3>
 
             <div class="d-block my-3">
+              {% for value, name in form.fields.payment_option.choices %}
               <div class="custom-control custom-radio">
                 <input
-                  id=""
+                  id="{{ name }}"
                   name="payment_option"
-                  value=""
+                  value="{{ value }}"
                   type="radio"
                   class="custom-control-input"
                   required
                 />
-                <label class="custom-control-label" for="">label</label>
+                <label class="custom-control-label" for="{{ name }}"
+                  >{{ name }}</label
+                >
               </div>
+              {% endfor %}
             </div>
 
             <hr class="mb-4" />
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <button id="navbutton" class="btn btn-lg btn-block" type="submit">
               Continue to checkout
             </button>
           </form>
         </div>
       </div>
-
-      <div class="col-md-4 mb-4"></div>
     </div>
   </div>
 </main>

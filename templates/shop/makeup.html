@@ -1,0 +1,39 @@
+{%extends 'base.html'%} {%block content%}
+<h2>Makeup</h2>
+<div class="container justify-content-center">
+  <div class="row justify-content-center">
+    <div>
+      {%for product in object_list%}
+      <div class="card-columns">
+        <div class="card pop col text-center" style="width: 18rem;">
+          <img
+            src="{{product.photo_main.url}}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a
+              class="stretched-link text-muted"
+              href="{{product.get_absolute_url}} "
+            >
+              <h5 class="card-title">Product name</h5></a
+            >
+            <p class="card-text">
+              Brand
+            </p>
+            <a
+              href="{{object.get_add_to_cart_url }}"
+              id="navbutton"
+              class="btn my-2 my-sm-0"
+              >Add to Cart <i class="fas fa-shopping-cart"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      {%endfor%}
+    </div>
+  </div>
+</div>
+
+{%endblock content%}
