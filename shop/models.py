@@ -24,7 +24,7 @@ class Product(models.Model):
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     is_published = models.BooleanField(default=True)
     slug = models.SlugField()
-    size = models.FloatField()
+    size = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title

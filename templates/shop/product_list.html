@@ -1,43 +1,39 @@
 {%extends 'base.html'%} {%block content%}
+<div class="container-fiuld">
 <h2>Skincare</h2>
-<div class="container">
-  <div class="card-columns">
-    {%for product in products%}
 
-    <div class="card pop col text-center">
-      <img
-        id="card-photo"
-        src="{{product.photo_main.url}} "
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </p>
-        <a
-          href="{{product.get_add_to_cart_url }}"
-          id="navbutton"
-          class="btn my-2 my-sm-0"
-          >Add to Cart <i class="fas fa-shopping-cart"></i
-        ></a>
-        <a
-          href="{{product.get_add_to_favorites_url }}"
-          id="navbutton"
-          class="btn my-2 my-sm-0"
-          >Favorite <i class=""></i
-        ></a>
-        <a
-          href="{{product.get_remove_from_favorites_url }}"
-          id="navbutton"
-          class="btn my-2 my-sm-0"
-          >Remove Favorite <i class=""></i
-        ></a>
+ 
+    <div class="card-columns mr-5">
+      {%for product in products%}
+
+      <div class="card h-100 pop col text-center">
+        <img
+          id="card-photo"
+          src="{{product.photo_main.url}} "
+          class="card-img-top "
+          alt="..."
+        />
+        <div class="card-body">
+          <a  class="stretched-link text-muted" href="{{product.get_absolute_url }}"> <h5 class="card-title">{{product.title}}</h5></a>
+          <p class="card-text">
+            {{product.brand}}</p>
+          <a
+            href="{{product.get_add_to_cart_url }}"
+            id="navbutton"
+            class="btn my-2 my-sm-0"
+            >Add to Cart <i class="fas fa-shopping-cart"></i
+          ></a>
+          <a
+            href="{{product.get_add_to_favorites_url }}"
+            id="navbutton"
+            class="btn my-2 my-sm-0"
+            >Favorite <i class="fas fa-heart"></i>
+            </a>
+          
+        </div>
       </div>
+      {%endfor%}
     </div>
-    {%endfor%}
   </div>
 </div>
 {%endblock content%}

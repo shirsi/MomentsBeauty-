@@ -13,16 +13,16 @@ from django.contrib.postgres.search import SearchVector
 
 
 def index(request):
-    # products = Product.objects.order_by(
-    #     '-product_date').filter(is_published=True)[:3]
-    # context = {
-    #     'products': products
-    # }
-    return render(request, 'shop/index.html')
+    products = Product.objects.order_by(
+        '-list_date').filter(is_published=True)[:3]
+    context = {
+        'products': products
+    }
+    return render(request, 'shop/index.html', context)
 
 
 def product_list(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(skincare=True)
     context = {
         'products': products
     }
@@ -39,6 +39,14 @@ def makeup(request):
         'products': products
     }
     return render(request, 'shop/makeup.html', context)
+
+
+def hair(request):
+    products = Product.objects.filter(hair=True)
+    context = {
+        'products': products
+    }
+    return render(request, 'shop/hair.html', context)
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
@@ -242,9 +250,11 @@ def remove_from_favorites(request, slug):
             print(favor_product)
             favor.products.remove(favor_product)
             favor_product.delete()
+            messages.warning(
+                request, "This product was removed from your favorites")
 
         else:
-            messages.warning(request, "This product was not in your cart")
+            messages.warning(request, "This product was not in your favorites")
             return redirect('shop:products', slug=slug)
     else:
         return redirect('shop:products', slug=slug)
@@ -265,16 +275,19 @@ def add_to_favorites(request, slug):
         favor = favor_qs[0]
 
         if favor.products.filter(product__slug=product.slug).exists():
-            favor_product.save()
-            print(favor_product)
-            return redirect('shop:products', slug=slug)
+
+            messages.success(
+                request, "This product already in your favorites.")
         else:
             favor.products.add(favor_product)
+            messages.success(
+                request, "This product was added to your favorites.")
     else:
         favor = UserProfile.objects.create(
             user=request.user)
         favor.products.add(favor_product)
-        messages.success(request, "This item was added to your cart.")
+        messages.success(request, "This product was added to your favorites.")
+
     return redirect('shop:products', slug=slug)
 
 

@@ -5,7 +5,13 @@
 
     <section id="object" class="py-4">
       <div class="container">
-        <a href="{% url 'shop:products' %}" class="btn btn-light mb-4">Back</a>
+        {%if object.makeup == True %}
+          <a href="{% url 'shop:makeup' %}" class="btn btn-light mb-4">Back</a>
+        {%elif object.skincare == True %}
+         <a href="{% url 'shop:products' %}" class="btn btn-light mb-4">Back</a>
+         {%elif object.hair == True %}
+            <a href="{% url 'shop:hair' %}" class="btn btn-light mb-4">Back</a>
+          {%endif%}
         <div class="row">
           <div class="col">
             <!-- Home Main Image -->
@@ -62,9 +68,9 @@
             <div class="col">
             <div class="row ">
               <div class="col">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs nav-pills nav-fill" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a id = "purple" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About this brand</a>
+                    <a  class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About this brand</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">How to Use</a>
@@ -74,9 +80,9 @@
                   </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Pat or massage onto face and neck. Use AM and PM daily.</div>
-                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Water (Aqua), Ethylhexyl Palmitate, Glycerin, Niacinamide, Cetearyl Alcohol, 1,2-Hexanediol, Dicaprylyl Carbonate, Butylene Glycol, Glyceryl Stearate, Sorbitan Stearate, Camellia Sinensis Leaf Extract, Juniperus Communis Fruit Extract, Melia Azadirachta Flower Extract, Melia Azadirachta Leaf Extract, Moringa Oleifera Seed Extract, Nelumbo Nucifera Flower Extract, Panthenol, Tocopherol, Adenosine, Allantoin, Betaine, Caramel, Chlorphenesin, Eriobotrya Japonica Leaf Extract, Glyceryl Olivate, Cetearyl Olivate, Hydrogenated Rapeseed Alcohol, Propanediol, Pantolactone, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl </div>
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{object.brand_info}}</div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{{object.how_to}}</div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{{object.ingredients}} </div>
                 </div>
                 </div>
             </div>
@@ -86,12 +92,8 @@
             <div class="col-md-12">
               <h5>{{object.title}}</h5> </h5>
               <p>
-                !Product description!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia recusandae esse reiciendis officia omnis non rerum dicta
-              cupiditate nostrum molestias deserunt aut minus inventore animi atque, consequuntur ad fugit. Possimus culpa
-              blanditiis repellendus ipsa similique ullam, natus error dolor harum.
-              </p>
-              <p>Size: {{object.size}} ml</p>
+                {{object.description}}
+              <p>Size: {{object.size}} </p>
               <p>Price: ${{object.price}}</p>
               <!-- <form class="form-inline my-2 my-lg-0">
                 <input type= 'hidden'>
@@ -99,6 +101,14 @@
               </form> -->
 
               <a href  = "{{object.get_add_to_cart_url }}" id = "navbutton" class="btn  my-2 my-sm-0" >Add to Cart <i class="fas fa-shopping-cart"></i></a>
+              <a
+            href="{{product.get_add_to_favorites_url }}"
+            id="navbutton"
+            class="btn my-2 my-sm-0"
+            >Favorite <i class="fas fa-heart"></i>
+            </a>
+             
+
           </div>
         </div>
         <div ></div>

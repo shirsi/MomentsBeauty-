@@ -8,6 +8,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('products/', views.product_list, name='products'),
     path('checkout/', views.checkout, name='checkout'),
+    path('hair/', views.hair, name='hair'),
     path('makeup/', views.makeup, name='makeup'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('dashboard/', UserProfileView.as_view(), name='dashboard'),
