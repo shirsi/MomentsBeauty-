@@ -16,7 +16,7 @@ h1 {
 .lead {
   font-family: "Gotu", sans-serif;
   font-family: "Dancing Script", cursive;
-  /* font-size: 1em; */
+  font-size: 1em;
   margin: 2em;
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 #card-photo {
-  height: 20vh;
+  height: 30vh;
   width: 25vw;
 }
 #light-purplepink {
@@ -95,4 +95,11 @@ body {
 
 .card-columns {
   display: inline-block;
+}
+#checkout-form {
+  margin-bottom: 20em;
+}
+
+#buffer {
+  margin-bottom: 100px;
 }

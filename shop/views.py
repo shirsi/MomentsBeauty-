@@ -32,10 +32,12 @@ def checkout(request):
     return render(request, 'shop/checkout.html')
 
 
-class MakeupView (ListView):
-    model = Product
-    paginate_by = 20
-    template_name = 'shop/makeup.html'
+def makeup(request):
+    products = Product.objects.filter(makeup=True)
+    context = {
+        'products': products
+    }
+    return render(request, 'shop/makeup.html', context)
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
@@ -88,6 +90,20 @@ def add_to_cart(request, slug):
     #         products: Product.objects.all()
     #     }
     #     return render(request, 'makeup.html')
+
+
+def search(request):
+    queryset_list = Product.objects.order_by('-list_date')
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            queryset_list = queryset_list.filter(
+                description__icontains=keywords)
+    context = {
+        'products': queryset_list
+
+    }
+    return render(request, 'shop/search.html', context)
 
 
 @login_required
