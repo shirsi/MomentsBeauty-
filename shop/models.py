@@ -12,7 +12,7 @@ class Product(models.Model):
     brand_info = models.TextField(blank=True)
     how_to = models.TextField(blank=True)
     ingredients = models.TextField(blank=True)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
