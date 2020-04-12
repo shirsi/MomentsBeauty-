@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
-from .models import Product, OrderProduct, Order
+from .models import Product, OrderProduct, Order, UserProfile, FavoritedProduct
 from datetime import datetime
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -85,12 +85,6 @@ def add_to_cart(request, slug):
         order.products.add(order_product)
         messages.success(request, "This item was added to your cart.")
     return redirect('shop:products', slug=slug)
-
-    # def makeup(request):
-    #     context = {
-    #         products: Product.objects.all()
-    #     }
-    #     return render(request, 'makeup.html')
 
 
 def search(request):
@@ -223,3 +217,73 @@ def remove_product_from_cart(request, slug):
     else:
         return redirect('shop:products')
     return redirect('shop:products')
+
+
+################################################################
+
+
+@login_required
+def remove_from_favorites(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    print(product)
+    favor_qs = UserProfile.objects.filter(user=request.user)
+
+    if favor_qs.exists():
+        favor = favor_qs[0]
+
+        print(favor.products)
+        if favor.products.filter(product__slug=product.slug).exists():
+            print('in here')
+            favor_product = FavoritedProduct.objects.filter(
+                product=product,
+                user=request.user,
+
+            )[0]
+            print(favor_product)
+            favor.products.remove(favor_product)
+            favor_product.delete()
+
+        else:
+            messages.warning(request, "This product was not in your cart")
+            return redirect('shop:products', slug=slug)
+    else:
+        return redirect('shop:products', slug=slug)
+    return redirect('shop:products', slug=slug)
+
+
+@login_required
+def add_to_favorites(request, slug):
+    print('favor')
+    product = get_object_or_404(Product, slug=slug)
+    favor_product, created = FavoritedProduct.objects.get_or_create(
+        product=product,
+        user=request.user,
+    )
+    favor_qs = UserProfile.objects.filter(user=request.user)
+    if favor_qs.exists():
+        favor = favor_qs[0]
+        # print(order)
+        if favor.products.filter(product__slug=product.slug).exists():
+            return redirect('shop:products', slug=slug)
+    else:
+
+        favor = UserProfile.objects.create(
+            user=request.user)
+        favor.products.add(favor_product)
+        messages.success(request, "This item was added to your cart.")
+    return redirect('shop:products', slug=slug)
+
+
+class UserProfileView(LoginRequiredMixin, View):
+    def get(self, *args, **kwargs):
+        try:
+            favor = UserProfile.objects.get(
+                user=self.request.user)
+            print(favor)
+            context = {
+                'object': favor
+            }
+            return render(self.request, 'accounts/dashboard.html', context)
+        except UserProfile.DoesNotExist:
+            message.error(self.request, "You don't have favors", context)
+            return render('accounts/dashboard.html')

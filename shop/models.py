@@ -35,6 +35,12 @@ class Product(models.Model):
     def get_add_to_cart_url(self):
         return reverse("shop:add-to-cart", kwargs={'slug': self.slug})
 
+    def get_remove_from_favorites_url(self):
+        return reverse("shop:remove-from-favorites", kwargs={'slug': self.slug})
+
+    def get_add_to_favorites_url(self):
+        return reverse("shop:add-to-favorites", kwargs={'slug': self.slug})
+
     def get_remove_from_cart_url(self):
         return reverse("shop:remove-from-cart", kwargs={'slug': self.slug})
 
@@ -69,3 +75,21 @@ class Order(models.Model):
         for order_product in self.products.all():
             total += order_product.get_total_product_price()
         return total
+
+
+class FavoritedProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.product.title}"
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    products = models.ManyToManyField(FavoritedProduct)
+
+    def __str__(self):
+        return self.user.username

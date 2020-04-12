@@ -16,7 +16,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index'%}"> <i class="fas fa-home"></i> Home</a>
+          <a href="{% url 'shop:index'%}"> <i class="fas fa-home"></i> Home</a>
         </li>
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
@@ -62,6 +62,45 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div id="buffer" class="checkout-form">
+        <div class="container d-flex justify-content-center">
+          <div class="row justify-content-center">
+            <div>
+              {%for product in object.products.all%}
+              <div class="card-columns">
+                <div class="card pop col text-center" style="width: 18rem;">
+                  <img
+                    src="{{product.photo_main.url}}"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <a
+                      class="stretched-link text-muted"
+                      href="{{product.get_absolute_url}} "
+                    >
+                      <h5 class="card-title">Product name</h5></a
+                    >
+                    <p class="card-text">
+                      Brand
+                    </p>
+                    <a
+                      href="{{object.get_add_to_cart_url }}"
+                      id="navbutton"
+                      class="btn my-2 my-sm-0"
+                      >Add to Cart <i class="fas fa-shopping-cart"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              {%empty%}
+              <div><h5>No Product Found</h5></div>
+
+              {%endfor%}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
