@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.contrib.postgres.search import SearchVector
 
 
 def index(request):
@@ -97,8 +98,10 @@ def search(request):
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
-            queryset_list = queryset_list.filter(
-                description__icontains=keywords)
+            queryset_list = Product.objects.annotate(
+                search=SearchVector(
+                    'title') + SearchVector('brand')
+            ).filter(search=keywords)
     context = {
         'products': queryset_list
 
