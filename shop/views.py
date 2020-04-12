@@ -263,13 +263,13 @@ def add_to_favorites(request, slug):
     print(favor_qs)
     if favor_qs.exists():
         favor = favor_qs[0]
-        print(favor)
-        for product in favor.products.all():
-            print(product)
+
         if favor.products.filter(product__slug=product.slug).exists():
             favor_product.save()
             print(favor_product)
             return redirect('shop:products', slug=slug)
+        else:
+            favor.products.add(favor_product)
     else:
         favor = UserProfile.objects.create(
             user=request.user)
