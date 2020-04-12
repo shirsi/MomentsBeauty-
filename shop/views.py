@@ -21,9 +21,7 @@ def index(request):
 
 
 def product_list(request):
-    products = Product.objects.filter(
-        skincare=True
-    )
+    products = Product.objects.all()
     context = {
         'products': products
     }

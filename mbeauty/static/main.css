@@ -80,6 +80,10 @@ body {
   width: 25vw;
 }
 
+#card-photo {
+  height: 20vh;
+  width: 25vw;
+}
 #light-purplepink {
   background: #ffe2ff;
 }
@@ -87,4 +91,8 @@ body {
 #product-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.card-columns {
+  display: inline-block;
 }
