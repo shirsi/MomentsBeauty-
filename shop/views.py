@@ -260,13 +260,17 @@ def add_to_favorites(request, slug):
         user=request.user,
     )
     favor_qs = UserProfile.objects.filter(user=request.user)
+    print(favor_qs)
     if favor_qs.exists():
         favor = favor_qs[0]
-        # print(order)
+        print(favor)
+        for product in favor.products.all():
+            print(product)
         if favor.products.filter(product__slug=product.slug).exists():
+            favor_product.save()
+            print(favor_product)
             return redirect('shop:products', slug=slug)
     else:
-
         favor = UserProfile.objects.create(
             user=request.user)
         favor.products.add(favor_product)
@@ -275,7 +279,10 @@ def add_to_favorites(request, slug):
 
 
 class UserProfileView(LoginRequiredMixin, View):
+    print('hi')
+
     def get(self, *args, **kwargs):
+        print('here')
         try:
             favor = UserProfile.objects.get(
                 user=self.request.user)
@@ -283,7 +290,20 @@ class UserProfileView(LoginRequiredMixin, View):
             context = {
                 'object': favor
             }
+            for product in favor.products.all():
+                print(product)
+
             return render(self.request, 'accounts/dashboard.html', context)
         except UserProfile.DoesNotExist:
             message.error(self.request, "You don't have favors", context)
             return render('accounts/dashboard.html')
+
+
+# def favorites_list(request):
+#     favor = UserProfile.objects.all()
+#     for product in favor.products.all():
+#         print(product)
+#     context = {
+#         'object': favor
+#     }
+#     return render(request, 'accounts/dashboard.html', context)

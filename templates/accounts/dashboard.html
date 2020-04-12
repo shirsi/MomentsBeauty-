@@ -28,74 +28,41 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Welcome John</h2>
-        <p>Here are the property listings that you have inquired about</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Property</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>22</td>
-              <td>45 Drivewood Circle</td>
-              <td>
-                <a class="btn btn-light" href="#">View Listing</a>
-              </td>
-            </tr>
-            <tr>
-              <td>43</td>
-              <td>22 Westbrook rd</td>
-              <td>
-                <a class="btn btn-light" href="#">View Listing</a>
-              </td>
-            </tr>
-            <tr>
-              <td>31</td>
-              <td></td>
-              <td>
-                <a class="btn btn-light" href="#">View Listing</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <h2>Welcome {{user.username}}</h2>
+
       <div id="buffer" class="checkout-form">
         <div class="container d-flex justify-content-center">
           <div class="row justify-content-center">
             <div>
-              {%for product in object.products.all%}
-              <div class="card-columns">
-                <div class="card pop col text-center" style="width: 18rem;">
-                  <img
-                    src="{{product.photo_main.url}}"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <a
-                      class="stretched-link text-muted"
-                      href="{{product.get_absolute_url}} "
-                    >
-                      <h5 class="card-title">Product name</h5></a
-                    >
-                    <p class="card-text">
-                      Brand
-                    </p>
-                    <a
-                      href="{{object.get_add_to_cart_url }}"
-                      id="navbutton"
-                      class="btn my-2 my-sm-0"
-                      >Add to Cart <i class="fas fa-shopping-cart"></i
-                    ></a>
+              {%for products in object.products.all%}
+                  <div class="card-columns">
+                    <div class="card pop col text-center" style="width: 18rem;">
+                      <img
+                        src="{{products.product.photo_main.url}}"
+                        class="card-img-top"
+                        alt="..."
+                      />
+                      <div class="card-body">
+                        <a
+                          class="stretched-link text-muted"
+                          href="{{product.get_absolute_url}} "
+                        >
+                          <h5 class="card-title">Product name</h5></a
+                        >
+                        <p class="card-text">
+                          Brand
+                        </p>
+                        <a
+                          href="{{object.get_add_to_cart_url }}"
+                          id="navbutton"
+                          class="btn my-2 my-sm-0"
+                          >Add to Cart <i class="fas fa-shopping-cart"></i
+                        ></a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
               {%empty%}
-              <div><h5>No Product Found</h5></div>
+                <div><h5>No Product Found</h5></div>
 
               {%endfor%}
             </div>

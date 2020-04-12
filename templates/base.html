@@ -39,7 +39,7 @@
     ></script>
 
     <link rel="stylesheet" href="{% static 'main.css' now 'U' %}" />
-    <link rel="stylesheet" href="{% static 'lightbox/css/lightbox.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lightbox/css/lightbox.css' %}" />
     
     <title>Moments Beauty</title>
   </head>
@@ -115,7 +115,7 @@
         <ul class="navbar-nav ml-auto">
           {%if user.is_authenticated %}
           <li  class="nav-item active mr-3"class="nav-item mr-3" >
-            <a class="nav-link" href="{% url 'dashboard' %}"> Welcome
+            <a class="nav-link" href="{% url 'shop:dashboard' %}"> Welcome
               {{user.username}} </a>
           </li>
           <li class="nav-item mr-3">
