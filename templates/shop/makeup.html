@@ -3,35 +3,35 @@
 <h2>Makeup</h2>
 
  
-    <div class="card-columns mr-5">
-      {%for product in products%}
+<div class="card-columns mb-5  mr-5">
+  {%for product in products%}
 
-      <div class="card h-100 pop col text-center">
-        <img
-          id="card-photo"
-          src="{{product.photo_main.url}} "
-          class="card-img-top "
-          alt="..."
-        />
-        <div class="card-body">
-          <a  class="stretched-link text-muted" href="{{product.get_absolute_url }}"> <h5 class="card-title">{{product.title}}</h5></a>
-          <p class="card-text">
-            {{product.brand}}</p>
-          <a
-            href="{{product.get_add_to_cart_url }}"
-            id="navbutton"
-            class="btn my-2 my-sm-0"
-            >Add to Cart <i class="fas fa-shopping-cart"></i
-          ></a>
-          <a
-            href="{{product.get_add_to_favorites_url }}"
-            id="navbutton"
-            class="btn my-2 my-sm-0"
-            >Favorite <i class="fas fa-heart"></i>
-            </a>
-          
-        </div>
-      </div>
+  <div class="card h-100 mb-5  pop col text-center">
+    <a  class=" text-muted" href="{{product.get_absolute_url }}">  <img
+      id="card-photo"
+      src="{{product.photo_main.url}} "
+      class="card-img-top "
+      alt="..."
+    /></a>
+    <div class="card-body">
+      <a  class=" text-muted" href="{{product.get_absolute_url }}"> <h5 class="card-title">{{product.title}}</h5></a>
+      <p class="card-text">
+        {{product.brand}}</p>
+      <a
+        href="{{product.get_add_to_cart_url }}"
+        id="navbutton"
+        class="btn my-2 my-sm-0"
+        >Add to Cart <i class="fas fa-shopping-cart"></i
+      ></a>
+      <a
+        href="{{product.get_add_to_favorites_url }}"
+        id="navbutton"
+        class="btn my-2 my-sm-0"
+        >Favorite <i class="fas fa-heart"></i>
+        </a>
+      
+    </div>
+  </div>
       {%endfor%}
     </div>
   </div>

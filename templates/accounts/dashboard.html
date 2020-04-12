@@ -1,75 +1,53 @@
 {%extends 'base.html' %} {%block content %}
-<section id="showcase-inner" class="py-5 text-white">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12">
-        <h1 class="display-4">User Dashboard</h1>
-        <p class="lead">Manage your BT Real Estate account</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Breadcrumb -->
-<section id="bc" class="mt-3">
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{% url 'shop:index'%}"> <i class="fas fa-home"></i> Home</a>
-        </li>
-        <li class="breadcrumb-item active">Dashboard</li>
-      </ol>
-    </nav>
-  </div>
-</section>
+
 <!--Alerts-->
 <section id="dashboard" class="py-4 pink">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Welcome {{user.username}}</h2>
-
-      <div id="buffer" class="checkout-form">
-        <div class="container d-flex justify-content-center">
-          <div class="row justify-content-center">
-            <div>
-              {%for products in object.products.all%}
-                  <div class="card-columns">
-                    <div class="card pop col text-center" style="width: 18rem;">
-                      <img
-                        src="{{products.product.photo_main.url}}"
-                        class="card-img-top"
-                        alt="..."
-                      />
-                      <div class="card-body">
-                        <a
-                          class="stretched-link text-muted"
-                          href="{{products.product.get_absolute_url}} "
+      <div class="container">
+          <h2 calss="text-center">Favorites</h2>
+              <div class="table-responsive mb-5">
+                <table class="table">
+              
+                  <tbody>
+                    {%for favor_product in object.products.all%}
+                      <tr >
+                    
+                        <td><a style="color:black"
+                          style="text-decoration: none;"
+                          href="{{favor_product.product.get_absolute_url}}"
                         >
-                          <h5 class="card-title">Product name</h5></a
+                          
+                          <img id="main-photo"src="{{favor_product.product.photo_main.url}}" alt="" class="pop"></a>
+                        </td>
+                        <td><a style="color:black"
+                          style="text-decoration: none;"
+                          href="{{favor_product.product.get_absolute_url}}"
                         >
-                        <p class="card-text">
-                          Brand
-                        </p>
-                        <a
-                          href="{{object.get_add_to_cart_url }}"
-                          id="navbutton"
-                          class="btn my-2 my-sm-0"
-                          >Add to Cart <i class="fas fa-shopping-cart"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              {%empty%}
-                <div><h5>No Product Found</h5></div>
+                          {{favor_product.product.title}}</a
+                        > </td>
+                        <td>${{favor_product.product.price}}</td>
+                        <td>{{favor_product.quantity}}</td>
+                        
+                        <td>
+                          <a style ='color:#E0D5E9'
+                            href="{% url 'shop:remove-from-favorites' favor_product.product.slug %}"
+                            ><i class="fas fa-trash-alt"></i
+                          ></a>
+                        </td>
+                      </tr>
+                  
+              
+                    {%empty%}
+            <tr><h5>Favorite Empty </h5></tr>
 
-              {%endfor%}
-            </div>
-          </div>
+          {%endfor%}
+            </tbody>
+           </table>
         </div>
       </div>
     </div>
+      
   </div>
 </section>
 {%endblock%}

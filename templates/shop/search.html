@@ -3,20 +3,21 @@
   <h2>Product</h2>
   
    
-  <div class="card-columns mr-5">
+  <div class="card-columns mb-5  mr-5">
     {%for product in products%}
 
-    <div class="card h-100 pop col text-center">
-      <img
+ 
+    <div class="card h-100 mb-5  pop col text-center">
+      <a  class=" text-muted" href="{{product.get_absolute_url }}">  <img
         id="card-photo"
         src="{{product.photo_main.url}} "
         class="card-img-top "
         alt="..."
-      />
+      /></a>
       <div class="card-body">
-        <a  class="stretched-link text-muted" href="{{product.get_absolute_url }}"> <h4 class="card-title">{{product.title}}</h4></a>
+        <a  class=" text-muted" href="{{product.get_absolute_url }}"> <h5 class="card-title">{{product.title}}</h5></a>
         <p class="card-text">
-         {{product.brand}}</p>
+          {{product.brand}}</p>
         <a
           href="{{product.get_add_to_cart_url }}"
           id="navbutton"

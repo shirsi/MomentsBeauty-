@@ -252,12 +252,13 @@ def remove_from_favorites(request, slug):
             favor_product.delete()
             messages.warning(
                 request, "This product was removed from your favorites")
-
+            return redirect('shop:dashboard')
         else:
             messages.warning(request, "This product was not in your favorites")
             return redirect('shop:products', slug=slug)
     else:
         return redirect('shop:products', slug=slug)
+        essages.warning(request, "You don't have favorites")
     return redirect('shop:products', slug=slug)
 
 
@@ -308,7 +309,7 @@ class UserProfileView(LoginRequiredMixin, View):
 
             return render(self.request, 'accounts/dashboard.html', context)
         except UserProfile.DoesNotExist:
-            message.error(self.request, "You don't have favors", context)
+            message.error(self.request, "You don't have favorites", context)
             return render('accounts/dashboard.html')
 
 

@@ -8,7 +8,8 @@
   color: #666666;
 }
 
-h1 {
+h1,
+h2 {
   font-family: "Gotu", sans-serif;
   font-family: "Dancing Script", cursive;
 }
@@ -80,6 +81,11 @@ body {
   width: 25vw;
 }
 
+#fav-photo {
+  height: 20vh;
+  width: 15vw;
+}
+
 #card-photo {
   height: 30vh;
   width: 25vw;
@@ -102,4 +108,9 @@ body {
 
 #buffer {
   margin-bottom: 100px;
+}
+
+#dashboard {
+  display: flex;
+  place-items: center;
 }
