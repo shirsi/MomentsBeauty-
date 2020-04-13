@@ -1,10 +1,10 @@
 from django.urls import path
 from . import views
 from .views import (ProductDetailView,
-                    add_to_cart, remove_from_cart, OrderSummaryView, remove_single_product_from_cart, add_to_single_product_cart, remove_product_from_cart, add_to_favorites, remove_from_favorites, UserProfileView)
+                    add_to_cart, remove_from_cart, OrderSummaryView, remove_single_product_from_cart, add_to_single_product_cart, remove_product_from_cart, add_to_favorites, remove_from_favorites, UserProfileView, index)
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
     path('search/', views.search, name='search'),
     path('products/', views.product_list, name='products'),
     path('checkout/', views.checkout, name='checkout'),
@@ -24,6 +24,7 @@ urlpatterns = [
          add_to_single_product_cart, name='add-to-single-product-cart'),
     path('remove-product-from-cart/<slug>/',
          remove_product_from_cart, name='remove-product-from-cart'),
+    re_path(r'^.*$', index)
 
 
 ]

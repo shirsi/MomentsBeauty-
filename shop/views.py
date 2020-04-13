@@ -12,13 +12,17 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.postgres.search import SearchVector
 
 
-def index(request):
+def home(request):
     products = Product.objects.order_by(
         '-list_date').filter(is_published=True)[:3]
     context = {
         'products': products
     }
-    return render(request, 'shop/index.html', context)
+    return render(request, 'shop/home.html', context)
+
+
+def index(request):
+    return render(request, "build/index.html")
 
 
 def product_list(request):
