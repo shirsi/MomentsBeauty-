@@ -21,10 +21,6 @@ def home(request):
     return render(request, 'shop/home.html', context)
 
 
-def index(request):
-    return render(request, "build/index.html")
-
-
 def product_list(request):
     products = Product.objects.filter(skincare=True)
     context = {
