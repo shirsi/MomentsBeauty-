@@ -5,7 +5,7 @@
 <section id="dashboard" class="py-4 pink">
   <div class="container">
       <div class="container">
-          <h2 calss="text-center">Favorites</h2>
+          <h2 class="text-center">Favorites</h2>
               <div class="table-responsive mb-5">
                 <table class="table">
               
@@ -13,26 +13,25 @@
                     {%for favor_product in object.products.all%}
                       <tr >
                     
-                        <td><a style="color:black"
+                        <td ><a style="color:black"
                           style="text-decoration: none;"
                           href="{{favor_product.product.get_absolute_url}}"
                         >
                           
-                          <img id="main-photo"src="{{favor_product.product.photo_main.url}}" alt="" class="pop"></a>
+                          <img id="fav-photo"src="{{favor_product.product.photo_main.url}}" alt="" class="pop"></a>
                         </td>
-                        <td><a style="color:black"
+                        <td  class="align-middle"><a style="color:black"
                           style="text-decoration: none;"
                           href="{{favor_product.product.get_absolute_url}}"
-                        >
-                          {{favor_product.product.title}}</a
+                        ><h5>{{favor_product.product.title}} </h5></a
                         > </td>
-                        <td>${{favor_product.product.price}}</td>
-                        <td>{{favor_product.quantity}}</td>
+                        <td  class="align-middle"><h5>${{favor_product.product.price}}</h5></td>
+                        <td  class="align-middle">{{favor_product.quantity}}</td>
                         
-                        <td>
+                        <td  class="align-middle">
                           <a style ='color:#E0D5E9'
                             href="{% url 'shop:remove-from-favorites' favor_product.product.slug %}"
-                            ><i class="fas fa-trash-alt"></i
+                            ><i class="fas fa-trash-alt fa-3x"></i
                           ></a>
                         </td>
                       </tr>
