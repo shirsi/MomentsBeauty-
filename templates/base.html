@@ -85,7 +85,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="{%url 'shop:index' %}">M & B</a>
+        <a class="navbar-brand" href="{%url 'shop:home' %}">M & B</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li {% if '/makeup' in request.path %} class="nav-item active"  {%else%} class="nav-item" {%endif%}>
             <a class="nav-link" href="{%url 'shop:makeup' %}"
